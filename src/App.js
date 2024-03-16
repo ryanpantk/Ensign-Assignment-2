@@ -1,11 +1,10 @@
 import { Outlet } from "react-router";
+import NavBar from "./Components/NavBar";
 
 export default function App() {
     return (
       <>
-        <div className='w-screen h-16 bg-white'>
-  
-        </div>
+        <NavBar />
         <Outlet />
       </>
     )
