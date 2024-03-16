@@ -40,7 +40,7 @@ export default function Home() {
                 /* Product Listings */
                 <div className="grid grid-cols-4 gap-12 mt-8">
                     {products.map((product, index) => (
-                        <ProductCard key={index} index={index} product={product} />
+                        <ProductCard key={index} index={product.id} product={product} />
                     ))}
                 </div>
             }
