@@ -3,8 +3,8 @@ import { useParams } from "react-router";
 import Loader from "../Components/Loader";
 import { ProductListing } from "../Model/ProductListing";
 import { PrimaryButton } from "../Components/Button";
-import { toast } from "react-toastify";
-import { ShoppingCart } from "../Model/ShoppingCart";
+import { addToCart } from "../Services/Cart";
+import { GetProduct } from "../Services/FakeStore";
 
 export default function Product() {
     let { id } = useParams();
@@ -16,9 +16,7 @@ export default function Product() {
             try {
                 setLoading(true);
                 // Get the product and convert it to a ProductListing object
-                const data = await fetch('https://fakestoreapi.com/products/'+ id)
-                    .then(res=>res.json())
-                    .then(json=>ProductListing.fromJson(json));
+                const data = await GetProduct(id!);
                 // Set the data and stop loading
                 setData(data);
                 setLoading(false);
@@ -29,14 +27,6 @@ export default function Product() {
         }
         fetchProduct();
     }, [id]);
-
-    const addToCart = () => {
-        ShoppingCart.addToCart(data!);
-        toast.success(`${data!.getTitle()} added to Cart.`, {
-            position: "bottom-right",
-            theme: "light",
-        });
-    }
     
     return (
         <div>
@@ -54,7 +44,7 @@ export default function Product() {
                         <p className="text-xl text-gray-600 first-letter:capitalize">{data!.getDescription()}</p>
                         <p className="text-2xl font-bold my-4">${data!.getPrice()}</p>
                         <div className="w-fit self-end">
-                            <PrimaryButton text="Add to Cart" onClick={addToCart}/>
+                            <PrimaryButton text="Add to Cart" onClick={()=> addToCart(data!)}/>
                         </div>
                     </div>
                 </div>

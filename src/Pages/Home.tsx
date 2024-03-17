@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Header from "../Components/Header";
 import Loader from "../Components/Loader";
 import ProductCard from "../Components/ProductListing/ProductCard";
+import { GetAllProducts } from "../Services/FakeStore";
 
 export default function Home() {
     const [products, setProducts] = useState<ProductListing[]>([]);
@@ -13,9 +14,7 @@ export default function Home() {
             try {
                 setLoading(true);
                 // Get all products and convert them to ProductListing objects
-                const data = await fetch('https://fakestoreapi.com/products')
-                    .then(res=>res.json())
-                    .then(json=>ProductListing.fromJsonArray(json));
+                const data = await GetAllProducts();
                 // Set the products and stop loading
                 setProducts(data);
                 setLoading(false);

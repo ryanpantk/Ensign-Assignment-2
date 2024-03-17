@@ -2,6 +2,15 @@ import { toast } from "react-toastify";
 import { CartItem } from "../Model/CartItem";
 import { ShoppingCart } from "../Model/ShoppingCart";
 import { NavigateFunction } from "react-router-dom";
+import { ProductListing } from "../Model/ProductListing";
+
+const addToCart = (item: ProductListing) => {
+    ShoppingCart.addToCart(item);
+    toast.success(`${item.getTitle()} added to Cart.`, {
+        position: "bottom-right",
+        theme: "light",
+    });
+}
 
 const removeFromCart = (item: CartItem, setCart: (cart: CartItem[]) => void) => {
     ShoppingCart.removeFromCart(item.product);
@@ -32,4 +41,4 @@ const checkout = (navigate: NavigateFunction) => {
     });
 }
 
-export { removeFromCart, decrementQuantity, incrementQuantity, checkout };
+export { addToCart, removeFromCart, decrementQuantity, incrementQuantity, checkout };
