@@ -16,7 +16,6 @@ export default function Product() {
             try {
                 setLoading(true);
                 // Get the product and convert it to a ProductListing object
-                console.log('https://fakestoreapi.com/products/'+ id);
                 const data = await fetch('https://fakestoreapi.com/products/'+ id)
                     .then(res=>res.json())
                     .then(json=>ProductListing.fromJson(json));
