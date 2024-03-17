@@ -19,7 +19,7 @@ export default function NavBar() {
                 className="ml-auto "
                 to="/cart"  
             >
-                <div className="px-12 h-20 flex items-center hover:bg-emerald-500">
+                <div className="px-12 h-20 flex items-center bg-emerald-500 hover:bg-emerald-600">
                     <ShoppingCartIcon className='h-8 w-8 text-white' />
                     <h1 className='text-white font-bold text-2xl ml-4'>My Shopping Cart</h1>
                 </div>
