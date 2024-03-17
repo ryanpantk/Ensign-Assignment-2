@@ -10,6 +10,7 @@ import Cart from './Pages/Cart';
 import { act } from 'react-dom/test-utils';
 import App from './App';
 import Home from './Pages/Home';
+import { ProductListing } from './Model/ProductListing';
 
 /*
     Default component to render with test-defined routes
@@ -38,7 +39,7 @@ const renderComponent = (route: string) => {
 */
 test('renders product page', async () => {
     // Get the product with id 1
-    let product;
+    let product: ProductListing | undefined;
     await act(async() => {
         product = await GetProduct('1');
     });
@@ -58,7 +59,7 @@ test('renders product page', async () => {
 */
 test('add to cart', async () => {
     // Get the product with id 1
-    let product;
+    let product: ProductListing | undefined;
     await act(async() => {
         product = await GetProduct('1');
     });
@@ -123,7 +124,7 @@ test('decrement quantity', async () => {
 */
 test('remove from cart', async () => {
     // Get the product with id 1
-    let product;
+    let product: ProductListing | undefined;
     await act(async() => {
         product = await GetProduct('1');
     });
@@ -148,7 +149,7 @@ test('remove from cart', async () => {
 */
 test('price calculation', async () => {
     // Get the product with id 1
-    let product;
+    let product: ProductListing | undefined;
     await act(async() => {
         product = await GetProduct('1');
     });
@@ -187,7 +188,7 @@ test('price calculation', async () => {
 */
 test('checkout', async () => {
     // Get the product with id 1
-    let product;
+    let product: ProductListing | undefined;
     await act(async() => {
         product = await GetProduct('1');
     });
