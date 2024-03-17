@@ -4,14 +4,21 @@ export class CartItem {
     product: ProductListing;
     quantity: number;
   
-    constructor(product: ProductListing, quantity: number) {
+    constructor(product: {
+      id: number;
+      title: string;
+      price: number;
+      category: string;
+      description: string;
+      image: string;
+    }, quantity: number) {
       this.product = new ProductListing(
-        product.getID(),
-        product.getTitle(),
-        product.getPrice(),
-        product.getCategory(),
-        product.getDescription(),
-        product.getImage()
+        product.id,
+        product.title,
+        product.price,
+        product.category,
+        product.description,
+        product.image
       );
       this.quantity = quantity;
     }
@@ -26,19 +33,18 @@ export class CartItem {
   
     setQuantity(quantity: number) {
       this.quantity = quantity;
+      return this;
     }
 
     incrementQuantity() {
         this.quantity++;
+        return this;
     }
 
     decrementQuantity() {
         if (this.quantity > 0) {
             this.quantity--;
         }
-    }
-  
-    getTotal() {
-      return this.product.getPrice() * this.quantity;
+        return this;
     }
 }
