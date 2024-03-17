@@ -1,3 +1,4 @@
+import React from 'react'
 import { BuildingStorefrontIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
 

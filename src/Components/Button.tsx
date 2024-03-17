@@ -1,4 +1,11 @@
-export function PrimaryButton({ text, onClick }) {
+import React from 'react';
+
+type ButtonProps = {
+    text: string;
+    onClick: () => void;
+};
+
+export function PrimaryButton({ text, onClick }: ButtonProps) {
     return (
         <button
             onClick={onClick}

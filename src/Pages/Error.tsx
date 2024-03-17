@@ -1,14 +1,15 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { PrimaryButton } from "../Components/Button";
 
 export default function ErrorPage() {
     const navigate=useNavigate();
-    function handleClick() {
-        navigate("/");
+    function handleClick(route: string) {
+        navigate(route);
     }
   
     return (
-      <div class="w-screen h-screen flex flex-col items-center justify-center">
+      <div className="w-screen h-screen flex flex-col items-center justify-center">
         <p className="text-3xl font-bold my-8">Oops!</p>
         <p className="text-xl font-semibold">Sorry, an unexpected error has occurred.</p>
         <div className="my-4">

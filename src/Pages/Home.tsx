@@ -1,12 +1,12 @@
 import { ProductListing } from "../Model/ProductListing";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from "../Components/Header";
 import Loader from "../Components/Loader";
 import ProductCard from "../Components/ProductListing/ProductCard";
 
 export default function Home() {
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [products, setProducts] = useState<ProductListing[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         const fetchProductListings = async () => {
@@ -29,7 +29,7 @@ export default function Home() {
     }, []);
     
     return (
-        <div className="w-screen h-full px-24 py-8 flex flex-col justify-start">
+        <div className="w-screen h-full px-24 py-8 flex flex-col">
             {/* Header */}
             <Header text="Product Listing"/>
             {loading 

@@ -1,6 +1,14 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import { ProductListing } from "../../Model/ProductListing";
 
-export default function ProductCard({index, product}) {
+type CardProps = {
+    index: number;
+    product: ProductListing;
+}
+
+
+export default function ProductCard({ index, product }: CardProps) {
     return (
         <Link to={`/product/${index}`}>
             <div key={index} className="bg-white rounded-xl shadow-md hover:scale-110">
