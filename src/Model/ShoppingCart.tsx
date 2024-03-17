@@ -37,6 +37,20 @@ export class ShoppingCart {
         }
     }
 
+    static updateCart(item: CartItem) {
+        if (!localStorage.getItem('cart')) {
+            return;
+        }
+        this.cart = JSON.parse(localStorage.getItem('cart') ?? '');
+        this.cart.forEach(element => {
+            if (element.product.id === item.product.getID()) {
+                element.quantity = item.getQuantity();
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+                return;
+            }
+        });
+    }
+
     static removeFromCart(product: ProductListing) {
         if (!localStorage.getItem('cart')) {
             return;
@@ -46,24 +60,9 @@ export class ShoppingCart {
         localStorage.setItem('cart', JSON.stringify(this.cart));
     }
 
-    static getCartTotal() {
-        if (!localStorage.getItem('cart')) {
-            return 0;
-        }
-        this.cart = JSON.parse(localStorage.getItem('cart') ?? '');
-        return this.cart.reduce((total, element) => total + element.product.price, 0);
-    }
-
-    static getCartCount() {
-        if (!localStorage.getItem('cart')) {
-            return 0;
-        }
-        this.cart = JSON.parse(localStorage.getItem('cart') ?? '');
-        return this.cart.length;
-    }
-
     static checkout() {
         this.cart = JSON.parse(localStorage.getItem('cart') ?? '');
         this.cart = [];
+        localStorage.setItem('cart', JSON.stringify(this.cart));
     }
 }
