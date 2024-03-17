@@ -24,7 +24,7 @@ export default function CartItemDetail({ item, index, removeFromCart, decrementQ
         {/* Quantity and remove button */}
         <div className="flex flex-row items-center">
             <SquareButton text="-" onClick={() => decrementQuantity(item)} />
-            <p className="text-xl font-semibold mx-4">{item.getQuantity()}</p>
+            <p title="quantity" className="text-xl font-semibold mx-4">{item.getQuantity()}</p>
             <SquareButton text="+" onClick={() => incrementQuantity(item)} />
             <div className="ml-4">
                 <DestructiveButton text="Remove" onClick={() => removeFromCart(item)} />
